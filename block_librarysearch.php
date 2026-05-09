@@ -117,7 +117,6 @@ class block_librarysearch extends block_base
             'quicklinks' => $quicklinks,
             'ssoparam' => $sso_param,
             'ssodata' => $ssodata,
-            'supportemail' => get_config('block_librarysearch', 'support_email') ?: 'ictsupport@ouk.ac.ke',
         ];
 
         // Use custom renderer or Mustache directly.
