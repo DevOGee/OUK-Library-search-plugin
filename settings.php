@@ -3,7 +3,7 @@
  * Library Search Block - Admin settings page.
  *
  * @package    block_librarysearch
- * @copyright  2025 Open University of Kenya
+ * @copyright  2026 Open University of Kenya
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -29,7 +29,7 @@ if ($ADMIN->fulltree) {
         'block_librarysearch/search_path',
         get_string('search_path', 'block_librarysearch'),
         get_string('search_path_desc', 'block_librarysearch'),
-        '/search?q=',
+        '?q=',
         PARAM_RAW_TRIMMED
     ));
 
@@ -85,12 +85,12 @@ if ($ADMIN->fulltree) {
     ));
 
     $ssomethods = [
-        'none'   => get_string('sso_none',   'block_librarysearch'),
-        'token'  => get_string('sso_token',  'block_librarysearch'),
-        'jwt'    => get_string('sso_jwt',    'block_librarysearch'),
+        'none' => get_string('sso_none', 'block_librarysearch'),
+        'token' => get_string('sso_token', 'block_librarysearch'),
+        'jwt' => get_string('sso_jwt', 'block_librarysearch'),
         'oauth2' => get_string('sso_oauth2', 'block_librarysearch'),
-        'cas'    => get_string('sso_cas',    'block_librarysearch'),
-        'email'  => get_string('sso_email',  'block_librarysearch'),
+        'cas' => get_string('sso_cas', 'block_librarysearch'),
+        'email' => get_string('sso_email', 'block_librarysearch'),
     ];
     $settings->add(new admin_setting_configselect(
         'block_librarysearch/sso_method',
