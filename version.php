@@ -17,7 +17,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component  = 'block_librarysearch';   // MUST match folder name exactly.
-$plugin->version    = 2026100601;              // Today: 2026-10-06, build 01.
+$plugin->version    = 2026100603;              // Today: 2026-10-06, build 03.
 $plugin->requires   = 2022112800;              // Minimum: Moodle 4.1.
 $plugin->maturity   = MATURITY_STABLE;         // Options: ALPHA, BETA, RC, STABLE.
 $plugin->release    = '1.0.0';                 // Human-readable version.
