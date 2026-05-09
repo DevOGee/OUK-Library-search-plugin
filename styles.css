@@ -156,9 +156,61 @@
     font-weight: 600;
 }
 
-/* Responsive adjustments */
-@media (max-width: 480px) {
-    .links-grid {
-        grid-template-columns: 1fr;
-    }
+/* System Support Card - Dashboard Design */
+.system-support-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin-top: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.system-support-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.support-content {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.support-icon {
+    font-size: 2.5rem;
+    color: #cc0000; /* Red chat icon as in image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.support-text {
+    flex: 1;
+}
+
+.support-heading {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #1a202c;
+    margin: 0;
+    margin-bottom: 2px;
+}
+
+.support-email {
+    margin: 0;
+    color: #4a5568;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.support-email a {
+    color: #4a5568;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.support-email a:hover {
+    color: #cc0000;
+    text-decoration: underline;
 }
