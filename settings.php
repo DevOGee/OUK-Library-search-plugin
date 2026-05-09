@@ -21,7 +21,7 @@ if ($ADMIN->fulltree) {
         'block_librarysearch/library_base_url',
         get_string('library_base_url', 'block_librarysearch'),
         get_string('library_base_url_desc', 'block_librarysearch'),
-        'https://library.ouk.ac.ke',
+        'https://research.ebsco.com/c/dzwow6/results',
         PARAM_URL
     ));
 

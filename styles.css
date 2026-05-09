@@ -64,6 +64,45 @@
     transform: translateY(0) !important;
 }
 
+/* EBSCO Filters Styling */
+.ebsco-filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-item {
+    margin-bottom: 5px;
+}
+
+.filter-item label {
+    padding: 8px 12px;
+    border: 2px solid #037b90;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #037b90;
+    transition: all 0.3s ease;
+    display: inline-block;
+    background: transparent;
+}
+
+.filter-item input {
+    display: none;
+}
+
+.filter-item input:checked + label {
+    background-color: #ff7f50;
+    border-color: #ff7f50;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(255, 127, 80, 0.3);
+}
+
+.filter-item:hover label {
+    background-color: rgba(3, 123, 144, 0.05);
+}
+
 /* Quick Links Styling */
 .library-quick-links {
     border-top: 1px solid #edf2f7;

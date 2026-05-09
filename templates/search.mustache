@@ -1,5 +1,8 @@
 <div class="block_librarysearch_container js-library-search" data-newtab="{{newtab}}">
     <form action="{{searchurl}}" method="GET" class="library-search-form" {{#newtab}}target="_blank"{{/newtab}}>
+        <input type="hidden" name="limiters" value="FT1:Y">
+        <input type="hidden" name="autocorrect" value="y">
+
         <div class="search-input-wrapper">
             <input type="text" name="q" class="form-control js-search-input" placeholder="{{placeholder}}" aria-label="{{placeholder}}" required>
             <span class="search-icon">
@@ -7,11 +10,22 @@
             </span>
         </div>
 
+        <div class="ebsco-filters mt-3 mb-3">
+            <div class="custom-control custom-checkbox filter-item">
+                <input type="checkbox" class="custom-control-input" id="FT" name="limiters" value="FT:Y">
+                <label class="custom-control-label" for="FT">Full text</label>
+            </div>
+            <div class="custom-control custom-checkbox filter-item">
+                <input type="checkbox" class="custom-control-input" id="RV" name="limiters" value="RV:Y">
+                <label class="custom-control-label" for="RV">Peer reviewed</label>
+            </div>
+        </div>
+
         {{#ssodata}}
         <input type="hidden" name="{{ssoparam}}" value="{{ssodata}}">
         {{/ssodata}}
 
-        <button type="submit" class="btn btn-teal btn-block mt-3 w-100 js-search-button">
+        <button type="submit" class="btn btn-teal btn-block w-100 js-search-button">
             {{buttontext}}
         </button>
     </form>
