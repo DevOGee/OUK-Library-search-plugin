@@ -1,0 +1,38 @@
+<div class="block_librarysearch_container js-library-search" data-newtab="{{newtab}}">
+    <form action="{{searchurl}}" method="GET" class="library-search-form" {{#newtab}}target="_blank"{{/newtab}}>
+        <div class="search-input-wrapper">
+            <input type="text" name="q" class="form-control js-search-input" placeholder="{{placeholder}}" aria-label="{{placeholder}}" required>
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+        </div>
+
+        {{#ssodata}}
+        <input type="hidden" name="{{ssoparam}}" value="{{ssodata}}">
+        {{/ssodata}}
+
+        <button type="submit" class="btn btn-teal btn-block mt-3 w-100 js-search-button">
+            {{buttontext}}
+        </button>
+    </form>
+
+    {{#quicklinks.0}}
+    <div class="library-quick-links mt-4">
+        <h6 class="quick-links-title">{{#str}} quicklinks, block_librarysearch {{/str}}</h6>
+        <div class="links-grid">
+            {{#quicklinks}}
+            <a href="{{url}}" class="quick-link-item" {{#newtab}}target="_blank"{{/newtab}}>
+                <div class="link-icon"><i class="fa {{icon}}"></i></div>
+                <span class="link-label">{{label}}</span>
+            </a>
+            {{/quicklinks}}
+        </div>
+    </div>
+    {{/quicklinks.0}}
+</div>
+
+{{#js}}
+require(['block_librarysearch/search'], function(Search) {
+    Search.init('.js-library-search');
+});
+{{/js}}
