@@ -93,12 +93,11 @@ class block_librarysearch extends block_base {
         // Build quick links.
         $quicklinks = [];
         if ($enable_quicklinks) {
-            $base = rtrim($libbaseurl, '/');
             $quicklinks = [
-                ['url' => $base . '/ebooks',     'label' => get_string('ebooks',     'block_librarysearch'), 'icon' => 'fa-book'],
-                ['url' => $base . '/journals',   'label' => get_string('journals',   'block_librarysearch'), 'icon' => 'fa-newspaper-o'],
-                ['url' => $base . '/repository', 'label' => get_string('repository', 'block_librarysearch'), 'icon' => 'fa-archive'],
-                ['url' => $base . '/opac',       'label' => get_string('opac',       'block_librarysearch'), 'icon' => 'fa-search-plus'],
+                ['url' => 'https://research.ebsco.com/c/dzwow6/results', 'label' => get_string('ebooks',     'block_librarysearch'), 'icon' => 'fa-book'],
+                ['url' => 'https://research.ebsco.com/c/dzwow6/results', 'label' => get_string('journals',   'block_librarysearch'), 'icon' => 'fa-newspaper-o'],
+                ['url' => 'https://erepository.ouk.ac.ke/home',          'label' => get_string('repository', 'block_librarysearch'), 'icon' => 'fa-archive'],
+                ['url' => 'https://research.ebsco.com/c/dzwow6/results', 'label' => get_string('opac',       'block_librarysearch'), 'icon' => 'fa-search-plus'],
             ];
         }
 
