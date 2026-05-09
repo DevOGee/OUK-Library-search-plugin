@@ -74,7 +74,7 @@ class block_librarysearch extends block_base
 
         // Read configuration.
         $libbaseurl = get_config('block_librarysearch', 'library_base_url') ?: 'https://research.ebsco.com/c/dzwow6/results';
-        $searchpath = get_config('block_librarysearch', 'search_path') ?: '/search?q=';
+        $searchpath = get_config('block_librarysearch', 'search_path') ?: '?q=';
         $enable_sso = (bool) get_config('block_librarysearch', 'enable_sso');
         $sso_method = get_config('block_librarysearch', 'sso_method') ?: 'none';
         $sso_secret = get_config('block_librarysearch', 'sso_secret') ?: '';
