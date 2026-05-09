@@ -18,42 +18,51 @@ define(['jquery', 'core/notification'], function($, Notification) {
             var quickLinks = container.find('.js-quick-link');
             var isNewTab = container.data('newtab') == 1;
 
-            console.log('Library Search: Initializing with selector: ' + selector);
+            console.log('Library Search: Initialization started');
 
             /**
              * Update all quick links with the current search query and filters.
              */
             var updateQuickLinks = function() {
                 var query = input.val().trim();
-                console.log('Library Search: Updating links for query: ' + query);
+                console.log('Library Search: Syncing links for query: ' + query);
 
                 quickLinks.each(function() {
-                    var baseUrl = $(this).data('original-href');
+                    var baseUrl = $(this).attr('data-original-href') || $(this).attr('href');
+                    if (!$(this).attr('data-original-href')) {
+                        $(this).attr('data-original-href', baseUrl);
+                    }
+
+                    if (query === '') {
+                        $(this).attr('href', baseUrl);
+                        return;
+                    }
+
                     try {
                         var url = new URL(baseUrl);
                         
-                        // Clear existing q and limiters to start fresh.
-                        url.searchParams.delete('q');
-                        url.searchParams.delete('limiters');
+                        // Clear existing params to avoid duplicates.
+                        url.search = ''; 
 
-                        if (query !== '') {
-                            url.searchParams.set('q', query);
-                            url.searchParams.set('autocorrect', 'y');
-                            
-                            // EBSCO default limiter.
-                            url.searchParams.append('limiters', 'FT1:Y');
+                        // Rebuild params.
+                        url.searchParams.set('q', query);
+                        url.searchParams.set('autocorrect', 'y');
+                        
+                        // EBSCO default limiter (Full Text 1).
+                        url.searchParams.append('limiters', 'FT1:Y');
 
-                            // Add active filters.
-                            filterInputs.each(function() {
-                                if ($(this).is(':checked')) {
-                                    url.searchParams.append('limiters', $(this).val());
-                                }
-                            });
-                        }
+                        // Add active filters from checkboxes.
+                        filterInputs.each(function() {
+                            if ($(this).is(':checked')) {
+                                console.log('Library Search: Adding limiter: ' + $(this).val());
+                                url.searchParams.append('limiters', $(this).val());
+                            }
+                        });
 
                         $(this).attr('href', url.toString());
+                        console.log('Library Search: Link updated to: ' + url.toString());
                     } catch (e) {
-                        console.error('Library Search: Invalid URL ' + baseUrl);
+                        console.error('Library Search: URL construction failed', e);
                     }
                 });
             };
@@ -72,7 +81,7 @@ define(['jquery', 'core/notification'], function($, Notification) {
                     }
                 });
                 sessionStorage.setItem(FILTERS_KEY, JSON.stringify(activeFilters));
-                console.log('Library Search: State saved');
+                console.log('Library Search: State saved locally');
             };
 
             /**
@@ -80,21 +89,18 @@ define(['jquery', 'core/notification'], function($, Notification) {
              */
             var loadState = function() {
                 var savedQuery = sessionStorage.getItem(STORAGE_KEY);
-                console.log('Library Search: Loading query: ' + savedQuery);
                 if (savedQuery !== null) {
+                    console.log('Library Search: Restoring query: ' + savedQuery);
                     input.val(savedQuery);
                 }
 
                 var savedFilters = sessionStorage.getItem(FILTERS_KEY);
                 if (savedFilters !== null) {
                     var activeFilters = JSON.parse(savedFilters);
-                    console.log('Library Search: Loading filters: ', activeFilters);
+                    console.log('Library Search: Restoring filters: ', activeFilters);
                     filterInputs.each(function() {
-                        if (activeFilters.indexOf($(this).attr('id')) !== -1) {
-                            $(this).prop('checked', true);
-                        } else {
-                            $(this).prop('checked', false);
-                        }
+                        var isChecked = activeFilters.indexOf($(this).attr('id')) !== -1;
+                        $(this).prop('checked', isChecked);
                     });
                 }
                 updateQuickLinks();
@@ -136,7 +142,7 @@ define(['jquery', 'core/notification'], function($, Notification) {
             // Initial load.
             loadState();
 
-            console.log('Library Search: Ready');
+            console.log('Library Search: Ready and Synchronized');
         }
     };
 });
