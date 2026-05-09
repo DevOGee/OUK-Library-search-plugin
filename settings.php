@@ -129,4 +129,11 @@ if ($ADMIN->fulltree) {
         get_string('sso_client_secret_desc', 'block_librarysearch'),
         ''
     ));
+    $settings->add(new admin_setting_configtext(
+        'block_librarysearch/support_email',
+        'System Support Email',
+        'The email address displayed in the help card at the bottom of the block.',
+        'ictsupport@ouk.ac.ke',
+        PARAM_EMAIL
+    ));
 }
