@@ -23,6 +23,11 @@ $string['repository']         = 'Repository';
 $string['opac']               = 'OPAC';
 $string['logintosearch']      = 'Please log in to search the library with SSO.';
 $string['noresults']          = 'No results found. Try different keywords.';
+$string['recentsearches']     = 'Recent Searches';
+$string['clearhistory']       = 'Clear';
+$string['keyword']            = 'Keyword';
+$string['title']              = 'Title';
+$string['author']             = 'Author';
 
 // Capability strings.
 $string['librarysearch:addinstance']   = 'Add a Library Search block';

@@ -1,13 +1,30 @@
 <div class="block_librarysearch_container js-library-search" data-newtab="{{newtab}}">
+    <div class="search-type-selector mb-3">
+        <div class="search-pills">
+            <button type="button" class="search-pill active js-search-type" data-type="keyword">{{#str}} keyword, block_librarysearch {{/str}}</button>
+            <button type="button" class="search-pill js-search-type" data-type="title">{{#str}} title, block_librarysearch {{/str}}</button>
+            <button type="button" class="search-pill js-search-type" data-type="author">{{#str}} author, block_librarysearch {{/str}}</button>
+        </div>
+    </div>
+
     <form action="{{searchurl}}" method="GET" class="library-search-form" {{#newtab}}target="_blank"{{/newtab}}>
         <input type="hidden" name="limiters" value="FT1:Y">
         <input type="hidden" name="autocorrect" value="y">
+        <input type="hidden" name="search_type" value="keyword" class="js-search-type-input">
 
         <div class="search-input-wrapper">
-            <input type="text" name="q" class="form-control js-search-input" placeholder="{{placeholder}}" aria-label="{{placeholder}}" required>
             <span class="search-icon">
                 <i class="fa fa-search"></i>
             </span>
+            <input type="text" name="q" class="form-control js-search-input" placeholder="{{placeholder}}" aria-label="{{placeholder}}" required autocomplete="off">
+            <div class="input-actions">
+                <button type="button" class="action-btn js-voice-search" title="Voice Search">
+                    <i class="fa fa-microphone"></i>
+                </button>
+                <button type="button" class="action-btn js-clear-search d-none" title="Clear Search">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
         </div>
 
         <div class="ebsco-filters mt-3 mb-3">
@@ -29,6 +46,16 @@
             {{buttontext}}
         </button>
     </form>
+
+    <div class="recent-searches-wrapper d-none mt-3 js-recent-searches-container">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h6 class="recent-title mb-0">{{#str}} recentsearches, block_librarysearch {{/str}}</h6>
+            <button type="button" class="btn btn-link btn-sm p-0 text-muted js-clear-history">{{#str}} clearhistory, block_librarysearch {{/str}}</button>
+        </div>
+        <div class="recent-pills js-recent-pills">
+            <!-- Recent searches injected here -->
+        </div>
+    </div>
 
     {{#quicklinks.0}}
     <div class="library-quick-links mt-4">
