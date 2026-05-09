@@ -12,11 +12,11 @@
 
         <div class="ebsco-filters mt-3 mb-3">
             <div class="custom-control custom-checkbox filter-item">
-                <input type="checkbox" class="custom-control-input" id="FT" name="limiters" value="FT:Y">
+                <input type="checkbox" class="custom-control-input js-filter-input" id="FT" name="limiters" value="FT:Y">
                 <label class="custom-control-label" for="FT">Full text</label>
             </div>
             <div class="custom-control custom-checkbox filter-item">
-                <input type="checkbox" class="custom-control-input" id="RV" name="limiters" value="RV:Y">
+                <input type="checkbox" class="custom-control-input js-filter-input" id="RV" name="limiters" value="RV:Y">
                 <label class="custom-control-label" for="RV">Peer reviewed</label>
             </div>
         </div>
@@ -35,7 +35,7 @@
         <h6 class="quick-links-title">{{#str}} quicklinks, block_librarysearch {{/str}}</h6>
         <div class="links-grid">
             {{#quicklinks}}
-            <a href="{{url}}" class="quick-link-item" {{#newtab}}target="_blank"{{/newtab}}>
+            <a href="{{url}}" class="quick-link-item js-quick-link" data-original-href="{{url}}" {{#newtab}}target="_blank"{{/newtab}}>
                 <div class="link-icon"><i class="fa {{icon}}"></i></div>
                 <span class="link-label">{{label}}</span>
             </a>
